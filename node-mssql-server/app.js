@@ -47,13 +47,25 @@ app.get("/api/employee", function(req , res){
     // }).catch(function (err) {
     //     console.log(err);
     // });
-    var query = "select * from Employee";
+    var query = "select * from Employees where IsActive = 1";
     executeQuery (res, query);
 });
 
 //POST API
 app.post("/save/employee", function(req , res){
-    var query = "INSERT INTO [Employee] (EmpNo,EmpName,Salary,DeptNo) VALUES ('" + req.body.EmpNo + "','" + req.body.EmpName +"','" + req.body.Salary+"','" + req.body.DeptNo +"')"
+    var query = "INSERT INTO [Employees] (EmpNo,EmpName,Salary,DeptNo,IsActive) VALUES ('" + req.body.EmpNo + "','" + req.body.EmpName +"','" + req.body.Salary+"','" + req.body.DeptNo +"', 1)"
+    executeQuery (res, query);
+});
+
+//POST API
+app.post("/update/employee", function(req , res){
+    var query = "update Employees set EmpNo = '" + req.body.EmpNo + "', EmpName = '" + req.body.EmpName +"', Salary = '" + req.body.Salary+"', DeptNo = '" + req.body.DeptNo +"' where UploadId = '"+ req.body.UploadId + "'";
+    executeQuery (res, query);
+    console.log('ipdat----', query);
+});
+
+app.post("/delete/employee", function(req , res){
+    var query ="UPDATE Employees SET IsActive = 0 WHERE UploadId = '"+ req.body.UploadId + "'";
     executeQuery (res, query);
 });
 
