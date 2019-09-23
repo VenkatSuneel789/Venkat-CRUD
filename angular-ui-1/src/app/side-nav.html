@@ -1,0 +1,61 @@
+<!-- <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <p>Auto-resizing sidenav</p>
+          <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+          <button (click)="showFiller = !showFiller" mat-raised-button>
+            Toggle extra text
+          </button>
+        </mat-drawer>
+        <nav>
+            <a routerLink="/home" routerLinkActive="active">Home</a>
+            <a routerLink="/pipes" routerLinkActive="active">Pipes</a>
+          </nav> 
+        <div class="example-sidenav-content"> 
+           <button type="button" mat-button (click)="drawer.toggle()">
+            Toggle sidenav
+          </button> 
+         </div>
+      
+      </mat-drawer-container> -->
+      
+      
+      <!-- Copyright 2019 Google Inc. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+          <!-- <mat-toolbar color="primary" class="example-toolbar" style="width:100%;">
+              <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+              <h1 class="example-app-name">Responsive App</h1>
+            </mat-toolbar> -->
+          <div class="example-container"  [class.example-is-mobile]="mobileQuery.matches">
+              <mat-toolbar color="primary" class="example-toolbar" >
+                  <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+                  <h1 class="example-app-name">Responsive App</h1>
+                </mat-toolbar>
+            
+              <mat-sidenav-container class="example-sidenav-container"
+                                     [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+                <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                             [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+                  <mat-nav-list>
+                    <a mat-list-item routerLink="/app-home">Template Forms</a>
+                    <a mat-list-item routerLink="/app-home2">Reactive Forms</a>
+                    <a mat-list-item routerLink="/app-pipes">Power Pipe</a>
+                    <a mat-list-item routerLink="/app-employee">Employee Details</a>
+                    <a mat-list-item [routerLink]="[{ outlets: { 'home123': ['app-home3'] } }]">Auxliary Route</a>
+                  </mat-nav-list>
+                </mat-sidenav>
+            
+                <mat-sidenav-content> 
+                  <router-outlet></router-outlet>
+                  <router-outlet name="home123"></router-outlet>
+                   <!-- <p *ngFor="let content of fillerContent">{{content}}</p>  -->
+                 </mat-sidenav-content>
+              </mat-sidenav-container>
+            </div>
+            
+            <!-- <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->
+            
+            
+            <!-- Copyright 2019 Google Inc. All Rights Reserved.
+                Use of this source code is governed by an MIT-style license that
+                can be found in the LICENSE file at http://angular.io/license -->

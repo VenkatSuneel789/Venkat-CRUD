@@ -1,0 +1,52 @@
+<mat-card class="contact-card">
+  <mat-card-header>
+    <mat-card-title *ngIf="!upload">Add Employee </mat-card-title>
+    <mat-card-title *ngIf="upload">Update Employee </mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="!upload">
+    <form novalidate (ngSubmit)="onSubmit(f)" #f="ngForm">
+       <mat-form-field>
+        <input matInput placeholder="EmployeeId"  class="form-control"  name="EmpNo" ngModel>
+      </mat-form-field> 
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="EmployeeName" class="form-control"  name="EmpName" ngModel>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Salary" class="form-control"  name="Salary" ngModel>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input matInput placeholder="DeptNo" class="form-control"  name="DeptNo" ngModel>
+        </mat-form-field>
+        <br>
+    <br>
+    <button id="submit" mat-raised-button type="submit" color="primary">Save</button>
+ 
+    </form>
+  </mat-card-content>
+  <mat-card-content *ngIf="upload">
+      <form novalidate (ngSubmit)="onUpdate()">
+         <mat-form-field>
+          <input matInput placeholder="EmployeeId"  class="form-control"  name="EmpNo" [(ngModel)]="editData.EmpNo">
+        </mat-form-field> 
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="EmployeeName" class="form-control"  name="EmpName" [(ngModel)]="editData.EmpName">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput placeholder="Salary" class="form-control"  name="Salary" [(ngModel)]="editData.Salary">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="DeptNo" class="form-control"  name="DeptNo" [(ngModel)]="editData.DeptNo">
+          </mat-form-field>
+          <br>
+      <br>
+      <button id="submit" mat-raised-button type="submit" color="primary">Update</button>
+   
+      </form>
+    </mat-card-content>
+</mat-card>
